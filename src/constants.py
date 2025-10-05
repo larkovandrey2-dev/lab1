@@ -1,1 +1,1 @@
-SAMPLE_CONSTANT: int = 10
+WARN_RESULT: int = 10 ** 3000
