@@ -65,6 +65,10 @@ class RPNConverter:
         self.OPERATION_WARN = False
 
         for i, token in enumerate(tokens):
+            if token == '(' and i > 0 and self.is_number(tokens[i - 1]):
+                raise CalculatorError("Invalid syntax: number before '('")
+            if token == ')' and i > 0 and tokens[i - 1] == '(':
+                raise CalculatorError("Invalid syntax: empty parentheses")
             if (prev_token is not None and prev_token in self.priority
                     and token in self.priority):
                 if (prev_token not in '()' and token not in '()'
