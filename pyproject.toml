@@ -3,3 +3,37 @@ name = "labs"
 version = "0.1.0"
 description = "Calculator based on RPN"
 requires-python = ">=3.12"
+
+readme = "README.md"
+license = { text = "MIT" }
+
+packages = ["src"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+strict_equality = true
+no_implicit_optional = true
+mypy_path = ["src"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "I"]
+ignore = []
+
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["src"]
+
+[tool.pre-commit]
+known-hooks = ["ruff", "mypy", "end-of-file-fixer", "trailing-whitespace"]
