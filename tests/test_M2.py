@@ -46,6 +46,18 @@ class TestCalculator(unittest.TestCase):
     def test_double_minus(self) -> None:
         self.assertEqual(self.calc("3--2"), 5)
 
+    def test_leading_zeros(self) -> None:
+        self.assertEqual(self.calc("003+04"), 7)
+
+    def test_float_and_parentheses(self) -> None:
+        self.assertEqual(self.calc("(1.5+2.5)*(2/1)"), 8)
+
+    def test_all_operations_together(self) -> None:
+        self.assertEqual(self.calc("2+3*4-5/2**2+1%3//1"), 13.75)
+
+    def test_complex_nested_parentheses(self) -> None:
+        self.assertEqual(self.calc("((1+2)*(3+4)/(5-3+1))"), 7)
+
     def test_plus_minus_combo(self) -> None:
         self.assertEqual(self.calc("3+-2"), 1)
 
